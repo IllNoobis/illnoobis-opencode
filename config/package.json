@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "@opencode-ai/plugin": "1.14.40",
+    "@ramarivera/opencode-model-announcer": "^1.0.2",
+    "opencode-agent-skills": "^0.6.5",
+    "opencode-working-memory": "^1.6.4",
+    "superpowers": "github:obra/superpowers"
+  }
+}

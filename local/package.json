@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@opencode-ai/plugin": "1.14.40",
+    "opencode-working-memory": "^1.6.4"
+  }
+}
