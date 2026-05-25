@@ -1,17 +1,16 @@
 # illnoobis-opencode — OpenCode Build Configuration
 
-Mirror of my OpenCode setup. Clone this repo, copy files to the right paths, run `npm install`, and you're good.
+Mirror of my OpenCode setup. Clone this repo, copy `config/` to the right path, run `npm install`, done.
 
 ## Repo structure
 
 ```
 illnoobis-opencode/
-├── config/              → ~/.config/opencode/          (global config)
-├── project/             → ~/Documents/general-ai/.opencode/  (project plugins)
-└── model-announcer/     → ~/opencode-model-announcer/  (plugin source)
+├── config/    → ~/.config/opencode/   (global config — copy this)
+└── project/   → ~/Documents/general-ai/.opencode/   (project-specific, optional)
 ```
 
-## Setup steps
+## Setup
 
 ### 1. Install OpenCode CLI
 
@@ -21,40 +20,44 @@ winget install OpenCode
 opencode --version
 ```
 
-### 2. Copy files
+### 2. Copy global config & install deps
 
 ```powershell
-# Global config
+# Copy config files
 cp -Recurse config/* ~/.config/opencode/
 
-# Project-level config
-cp project/* ~/Documents/general-ai/.opencode/
-
-# Model announcer plugin
-cp -Recurse model-announcer ~/opencode-model-announcer
+# Install everything (plugins, skills, model-announcer, etc.)
+cd ~/.config/opencode
+npm install
 ```
 
-### 3. Install npm dependencies
+That's it. The model announcer is just an npm dependency — `npm install` pulls `@ramarivera/opencode-model-announcer` automatically. No local copy needed.
+
+MCP servers (`@upstash/context7-mcp`, `chrome-devtools-mcp`) auto-install via npx on first use.
+
+### 3. (Optional) Project-specific config
+
+`project/` is for the `general-ai` project only. If you're working on that project:
 
 ```powershell
-cd ~/.config/opencode && npm install
-cd ~/Documents/general-ai/.opencode && npm install
-cd ~/opencode-model-announcer && npm install
+cp project/* ~/Documents/general-ai/.opencode/
+cd ~/Documents/general-ai/.opencode
+npm install
 ```
 
-MCP servers (`@upstash/context7-mcp`, `chrome-devtools-mcp`) auto-install via npx on first use — no extra step.
+## What's in the box
 
-### 4. Installed packages
+### npm packages in `~/.config/opencode/`
 
-| Location | Packages |
-|----------|----------|
-| `~/.config/opencode/` | `@opencode-ai/plugin@1.14.40`, `@ramarivera/opencode-model-announcer@^1.0.2`, `opencode-agent-skills@^0.6.5`, `opencode-working-memory@^1.6.4`, `superpowers@github:obra/superpowers` |
-| `project/` | `@opencode-ai/plugin@1.15.7` |
-| `model-announcer/` | `@opencode-ai/plugin@1.1.18` |
+| Package | Version |
+|---------|---------|
+| `@opencode-ai/plugin` | 1.14.40 |
+| `@ramarivera/opencode-model-announcer` | ^1.0.2 |
+| `opencode-agent-skills` | ^0.6.5 |
+| `opencode-working-memory` | ^1.6.4 |
+| `superpowers` | `github:obra/superpowers` |
 
-### 5. Custom skills (8)
-
-Installed under `~/.config/opencode/skills/`:
+### Custom skills (8) — under `config/skills/`
 
 | Skill | Purpose |
 |-------|---------|
@@ -65,31 +68,33 @@ Installed under `~/.config/opencode/skills/`:
 | `binary-analysis-patterns` | Compiled binary analysis |
 | `file-organizer` | File/folder organization |
 | `twitter-algorithm-optimizer` | Tweet optimization |
-| `ui-ux-pro-max` | UI/UX design intelligence (with data + scripts) |
+| `ui-ux-pro-max` | UI/UX design intelligence |
 
 Plus 14 superpowers skills loaded by the `@obra/superpowers` plugin.
 
-### 6. Plugins & MCP
+### Plugins & MCP
 
 | Plugin/MCP | Source |
 |------------|--------|
 | `superpowers` | `github:obra/superpowers` |
 | `opencode-agent-memory` | npm |
-| `@ramarivera/opencode-model-announcer` | npm (local copy in `model-announcer/`) |
+| `@ramarivera/opencode-model-announcer` | npm |
 | `graphify.js` | custom plugin in `config/plugins/` |
 | `context7-mcp` | `@upstash/context7-mcp@latest` (npx) |
 | `chrome-devtools-mcp` | `chrome-devtools-mcp@latest` (npx) |
 
-### 7. Theme
+### Theme
 
 `ayu-dark` — custom theme at `~/.config/opencode/themes/ayu-dark.json`
 
-### 8. Quick checklist
+### Memory (persistent)
+
+`~/.config/opencode/memory/` — `human.md`, `project.md`, `persona.md`
+
+## Quick checklist
 
 - [ ] OpenCode CLI installed (`opencode --version`)
 - [ ] `config/` → `~/.config/opencode/`
 - [ ] `npm install` in `~/.config/opencode/`
-- [ ] `project/` → `~/Documents/general-ai/.opencode/`
-- [ ] `npm install` in `~/Documents/general-ai/.opencode/`
-- [ ] `model-announcer/` → `~/opencode-model-announcer/`
-- [ ] `npm install` in `~/opencode-model-announcer/`
+
+That's everything. 3 steps.
