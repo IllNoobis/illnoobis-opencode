@@ -1,90 +1,95 @@
-# general-ai — OpenCode Build Setup
+# illnoobis-opencode — OpenCode Build Configuration
 
-This document lists everything needed to replicate this OpenCode build on another Windows machine.
+Mirror of my OpenCode setup. Clone this repo, copy files to the right paths, run `npm install`, and you're good.
 
-## 1. Install OpenCode CLI
+## Repo structure
+
+```
+illnoobis-opencode/
+├── config/              → ~/.config/opencode/          (global config)
+├── project/             → ~/Documents/general-ai/.opencode/  (project plugins)
+└── model-announcer/     → ~/opencode-model-announcer/  (plugin source)
+```
+
+## Setup steps
+
+### 1. Install OpenCode CLI
 
 ```powershell
 winget install OpenCode
-# or download from https://github.com/anomalyco/opencode/releases
-```
-
-Verify version (this build uses **v1.15.10**):
-```powershell
+# or: https://github.com/anomalyco/opencode/releases
 opencode --version
 ```
 
-## 2. Dependencies (npm packages)
-
-Install this to the global config file please (if it does not exist make one):
-
-### Global config (`%USERPROFILE%\.config\opencode\`)
-```powershell
-cd ~\.config\opencode
-npm install
-```
-Packages installed:
-- `@opencode-ai/plugin@1.14.40`
-- `@ramarivera/opencode-model-announcer@^1.0.2`
-- `opencode-agent-skills@^0.6.5`
-- `opencode-working-memory@^1.6.4`
-- `superpowers@github:obra/superpowers`
-
-## 3. MCP Servers (auto-installed on use via npx)
-
-These are configured in `~\.config\opencode\opencode.jsonc` and install on first use:
+### 2. Copy files
 
 ```powershell
-npx -y @upstash/context7-mcp@latest
-npx -y chrome-devtools-mcp@latest
+# Global config
+cp -Recurse config/* ~/.config/opencode/
+
+# Project-level config
+cp project/* ~/Documents/general-ai/.opencode/
+
+# Model announcer plugin
+cp -Recurse model-announcer ~/opencode-model-announcer
 ```
 
-## 4. Copy these directories/files
+### 3. Install npm dependencies
 
-| Source | Destination | Description |
-|--------|-------------|-------------|
-| `~\.config\opencode\` | same path | **Global config** — main config, plugins, memory, theme, MCP setup |
-| `~\.opencode\skills\` | same path | **Custom skills** (8 skills installed) |
-| `~\.opencode\plugins\graphify.js` | same path | Graphify plugin |
-| `~\.opencode\tui.json` | same path | TUI layout config |
-| `~\.opencode\memory\` | same path | Memory files |
-| `~\opencode-model-announcer\` | same path | Custom model announcer package |
-| `~\AGENTS.md` | same path | Agent instructions with graphify setup |
-| `~\Documents\general-ai\` | same path | **This project folder** + project-level `.opencode\` config |
+```powershell
+cd ~/.config/opencode && npm install
+cd ~/Documents/general-ai/.opencode && npm install
+cd ~/opencode-model-announcer && npm install
+```
 
-## 5. Custom skills installed
+MCP servers (`@upstash/context7-mcp`, `chrome-devtools-mcp`) auto-install via npx on first use — no extra step.
 
-Located at `~\.opencode\skills\`:
+### 4. Installed packages
 
-| Skill | Description |
-|-------|-------------|
-| `open-ralph-wiggum` | Iterative AI coding loop agent |
+| Location | Packages |
+|----------|----------|
+| `~/.config/opencode/` | `@opencode-ai/plugin@1.14.40`, `@ramarivera/opencode-model-announcer@^1.0.2`, `opencode-agent-skills@^0.6.5`, `opencode-working-memory@^1.6.4`, `superpowers@github:obra/superpowers` |
+| `project/` | `@opencode-ai/plugin@1.15.7` |
+| `model-announcer/` | `@opencode-ai/plugin@1.1.18` |
+
+### 5. Custom skills (8)
+
+Installed under `~/.config/opencode/skills/`:
+
+| Skill | Purpose |
+|-------|---------|
+| `open-ralph-wiggum` | Iterative AI coding loop |
 | `claude-memory-kit` | Persistent memory with audit rituals |
 | `chrome-extension-developer` | Chrome Extension Manifest V3 |
 | `reverse-engineer` | Binary analysis / RE toolchain |
 | `binary-analysis-patterns` | Compiled binary analysis |
 | `file-organizer` | File/folder organization |
 | `twitter-algorithm-optimizer` | Tweet optimization |
-| `ui-ux-pro-max` | UI/UX design intelligence |
+| `ui-ux-pro-max` | UI/UX design intelligence (with data + scripts) |
 
-Plus **14 built-in superpowers skills** (from `@obra/superpowers`) loaded via the global config plugin.
+Plus 14 superpowers skills loaded by the `@obra/superpowers` plugin.
 
-## 6. Theme
+### 6. Plugins & MCP
 
-- Custom theme: `ayu-dark` (saved at `~\.config\opencode\themes\ayu-dark.json`)
+| Plugin/MCP | Source |
+|------------|--------|
+| `superpowers` | `github:obra/superpowers` |
+| `opencode-agent-memory` | npm |
+| `@ramarivera/opencode-model-announcer` | npm (local copy in `model-announcer/`) |
+| `graphify.js` | custom plugin in `config/plugins/` |
+| `context7-mcp` | `@upstash/context7-mcp@latest` (npx) |
+| `chrome-devtools-mcp` | `chrome-devtools-mcp@latest` (npx) |
 
-## 7. Quick checklist
+### 7. Theme
 
-- [ ] OpenCode CLI v1.15.10+ installed (`opencode --version`)
-- [ ] `npm install` run in `~\.config\opencode\`
-- [ ] `npm install` run in `~\.opencode\`
-- [ ] `~\.config\opencode\` fully copied
-- [ ] `~\.opencode\skills\` fully copied
-- [ ] `~\.opencode\plugins\graphify.js` copied
-- [ ] `~\.opencode\tui.json` copied
-- [ ] `~\AGENTS.md` copied
-- [ ] `~\opencode-model-announcer\` copied + `npm install`
-- [ ] `~\Documents\general-ai\` fully copied
+`ayu-dark` — custom theme at `~/.config/opencode/themes/ayu-dark.json`
 
+### 8. Quick checklist
 
-Do me a favour if we can somehow import the hermes agent's auto skill making module + it's way of processing memory do that.
+- [ ] OpenCode CLI installed (`opencode --version`)
+- [ ] `config/` → `~/.config/opencode/`
+- [ ] `npm install` in `~/.config/opencode/`
+- [ ] `project/` → `~/Documents/general-ai/.opencode/`
+- [ ] `npm install` in `~/Documents/general-ai/.opencode/`
+- [ ] `model-announcer/` → `~/opencode-model-announcer/`
+- [ ] `npm install` in `~/opencode-model-announcer/`
