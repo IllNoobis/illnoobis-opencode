@@ -16,7 +16,7 @@ opencode --version
 
 ## 2. Dependencies (npm packages)
 
-Run these in each `.opencode/` directory to install plugins:
+Install this to the global config file please (if it does not exist make one):
 
 ### Global config (`%USERPROFILE%\.config\opencode\`)
 ```powershell
@@ -29,29 +29,6 @@ Packages installed:
 - `opencode-agent-skills@^0.6.5`
 - `opencode-working-memory@^1.6.4`
 - `superpowers@github:obra/superpowers`
-
-### Legacy local config (`%USERPROFILE%\.opencode\`)
-```powershell
-cd ~\.opencode
-npm install
-```
-Packages installed:
-- `@opencode-ai/plugin@1.14.40`
-- `opencode-working-memory@^1.6.4`
-
-### Project-level config (`%USERPROFILE%\Documents\general-ai\.opencode\`)
-```powershell
-cd %USERPROFILE%\Documents\general-ai\.opencode
-npm install
-```
-Packages installed:
-- `@opencode-ai/plugin@1.15.7`
-
-### Model announcer (custom)
-```powershell
-cd ~\opencode-model-announcer
-npm install
-```
 
 ## 3. MCP Servers (auto-installed on use via npx)
 
@@ -101,7 +78,6 @@ Plus **14 built-in superpowers skills** (from `@obra/superpowers`) loaded via th
 - [ ] OpenCode CLI v1.15.10+ installed (`opencode --version`)
 - [ ] `npm install` run in `~\.config\opencode\`
 - [ ] `npm install` run in `~\.opencode\`
-- [ ] `npm install` run in `~\Documents\general-ai\.opencode\`
 - [ ] `~\.config\opencode\` fully copied
 - [ ] `~\.opencode\skills\` fully copied
 - [ ] `~\.opencode\plugins\graphify.js` copied
@@ -109,3 +85,6 @@ Plus **14 built-in superpowers skills** (from `@obra/superpowers`) loaded via th
 - [ ] `~\AGENTS.md` copied
 - [ ] `~\opencode-model-announcer\` copied + `npm install`
 - [ ] `~\Documents\general-ai\` fully copied
+
+
+Do me a favour if we can somehow import the hermes agent's auto skill making module + it's way of processing memory do that.
