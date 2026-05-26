@@ -33,7 +33,7 @@ npm install
 
 That's it. The model announcer is just an npm dependency — `npm install` pulls `@ramarivera/opencode-model-announcer` automatically. No local copy needed.
 
-MCP servers (`@upstash/context7-mcp`, `chrome-devtools-mcp`) auto-install via npx on first use.
+MCP servers (`@agentmemory/mcp`, `@upstash/context7-mcp`, `chrome-devtools-mcp`) auto-install via npx on first use.
 
 ### 3. (Optional) Project-specific config
 
@@ -57,7 +57,7 @@ npm install
 | `opencode-working-memory` | ^1.6.4 |
 | `superpowers` | `github:obra/superpowers` |
 
-### Custom skills (8) — under `config/skills/`
+### Custom skills (10) — under `config/skills/`
 
 | Skill | Purpose |
 |-------|---------|
@@ -69,6 +69,8 @@ npm install
 | `file-organizer` | File/folder organization |
 | `twitter-algorithm-optimizer` | Tweet optimization |
 | `ui-ux-pro-max` | UI/UX design intelligence |
+| `skill-manager` | Hermes-style auto skill creation (procedural memory) |
+| `proactive-memory` | Hermes-style proactive memory usage |
 
 Plus 14 superpowers skills loaded by the `@obra/superpowers` plugin.
 
@@ -80,6 +82,7 @@ Plus 14 superpowers skills loaded by the `@obra/superpowers` plugin.
 | `opencode-agent-memory` | npm |
 | `@ramarivera/opencode-model-announcer` | npm |
 | `graphify.js` | custom plugin in `config/plugins/` |
+| `agentmemory-mcp` | `@agentmemory/mcp@latest` (npx) |
 | `context7-mcp` | `@upstash/context7-mcp@latest` (npx) |
 | `chrome-devtools-mcp` | `chrome-devtools-mcp@latest` (npx) |
 
@@ -90,6 +93,10 @@ Plus 14 superpowers skills loaded by the `@obra/superpowers` plugin.
 ### Memory (persistent)
 
 `~/.config/opencode/memory/` — `human.md`, `project.md`, `persona.md`
+
+`~/.config/opencode/agent-memory.json` — journal config with semantic search across sessions
+
+Agent automates memory writes via `proactive-memory` skill (user corrections, preferences, env facts) and skill creation via `skill-manager` skill (reusable workflows as SKILL.md).
 
 ## Quick checklist
 

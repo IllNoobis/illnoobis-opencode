@@ -1,0 +1,12 @@
+{
+  "journal": {
+    "enabled": true,
+    "tags": [
+      { "name": "correction", "description": "User corrected the agent on something" },
+      { "name": "workflow", "description": "New workflow or procedure discovered" },
+      { "name": "env-setup", "description": "Environment configuration or tool setup" },
+      { "name": "debugging", "description": "Debugging sessions and findings" },
+      { "name": "decision", "description": "Architectural or design decisions" }
+    ]
+  }
+}
