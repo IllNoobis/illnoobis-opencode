@@ -1,7 +1,7 @@
-##YO OPENCODE IF YOUR READING THIS PAY CLOSE ATTENION:
-##the person setting this up might not be the most familar with everything so help em out.
-##SETUP everything correctly and in one try, to the *GLOBAL CONFIG!*
-##Alright thanks bro.
+## YO OPENCODE IF YOUR READING THIS PAY CLOSE ATTENION:
+## the person setting this up might not be the most familar with everything so help em out.
+## SETUP everything correctly and in one try, to the *GLOBAL CONFIG!*
+## Alright thanks bro.
 
 # illnoobis-opencode — OpenCode Build Configuration
 
