@@ -23,6 +23,7 @@ Memory is durable storage for facts that shape future behavior. Use it proactive
 1. User preferences and corrections (most valuable — prevents repetition)
 2. Environment facts (OS, tools, project structure)
 3. Procedural knowledge (move to a skill if complex)
+4. Tool/CLI quirks discovered on this platform
 
 ## What NOT to Save
 
@@ -31,6 +32,14 @@ Memory is durable storage for facts that shape future behavior. Use it proactive
 - Things easily re-discovered
 - Temporary TODO state
 - Raw data dumps
+
+## When to Create a Skill Instead
+
+If a memory entry would need more than 3 lines or 5 steps, create a skill instead:
+- "How to deploy X" → skill
+- "I prefer Y" → memory
+- "The `z` command needs --flag on Windows" → memory
+- "Full workflow to set up Z with A, B, C" → skill
 
 ## How to Use the Tools
 
@@ -48,7 +57,9 @@ memory_list(scope="project")
 ## Rules
 
 1. Save proactively after corrections — don't wait for the user to ask
-2. Keep entries declarative and compact
-3. One fact per entry
-4. Remove stale entries when conventions change
+2. Keep entries declarative and compact — one fact per bullet
+3. Remove stale entries when conventions change
+4. **Do not exceed 2000 chars per memory store** (e.g., `human`, `project`)
 5. If a procedure has multiple steps, create a skill instead of a memory entry
+6. Structure entries as bullet points starting with `- ` for easy appending/removal
+7. When a correction replaces an old fact, remove the old line and add the new one

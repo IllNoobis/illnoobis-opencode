@@ -38,7 +38,7 @@ npm install
 
 That's it. The model announcer is just an npm dependency — `npm install` pulls `@ramarivera/opencode-model-announcer` automatically. No local copy needed.
 
-MCP servers (`@agentmemory/mcp`, `@upstash/context7-mcp`, `chrome-devtools-mcp`) auto-install via npx on first use.
+MCP servers (`@agentmemory/mcp`, `@upstash/context7-mcp`, `chrome-devtools-mcp`, `pinescript-docs`) auto-install via npx on first use.
 
 ### 3. (Optional) Project-specific config
 
@@ -62,22 +62,15 @@ npm install
 | `opencode-working-memory` | ^1.6.4 |
 | `superpowers` | `github:obra/superpowers` |
 
-### Custom skills (10) — under `config/skills/`
+### Custom skills (3) — under `config/skills/`
 
 | Skill | Purpose |
 |-------|---------|
-| `open-ralph-wiggum` | Iterative AI coding loop |
-| `claude-memory-kit` | Persistent memory with audit rituals |
-| `chrome-extension-developer` | Chrome Extension Manifest V3 |
-| `reverse-engineer` | Binary analysis / RE toolchain |
-| `binary-analysis-patterns` | Compiled binary analysis |
-| `file-organizer` | File/folder organization |
-| `twitter-algorithm-optimizer` | Tweet optimization |
-| `ui-ux-pro-max` | UI/UX design intelligence |
-| `skill-manager` | Hermes-style auto skill creation (procedural memory) |
+| `skill-manager` | Procedural memory — auto-create/patch/delete skills |
 | `proactive-memory` | Hermes-style proactive memory usage |
+| `deep-research` | Parallel agent investigation for technical research |
 
-Plus 14 superpowers skills loaded by the `@obra/superpowers` plugin.
+Plus 14 superpowers skills loaded by the `@obra/superpowers` plugin (brainstorming, TDD, debugging, writing-plans, etc.).
 
 ### Plugins & MCP
 
@@ -90,6 +83,7 @@ Plus 14 superpowers skills loaded by the `@obra/superpowers` plugin.
 | `agentmemory-mcp` | `@agentmemory/mcp@latest` (npx) |
 | `context7-mcp` | `@upstash/context7-mcp@latest` (npx) |
 | `chrome-devtools-mcp` | `chrome-devtools-mcp@latest` (npx) |
+| `pinescript-docs` | remote MCP at `pinescript-mcp.fly.dev` |
 
 ### Theme
 

@@ -7,3 +7,4 @@ limit: 5000
 read_only: false
 ---
 - When working with proxy scripts (bridge_mitm_proxy.py), always kill the old process before starting a new one
+- "recheck!" or "rechk" means re-read the file fresh (don't rely on cached content in context)
